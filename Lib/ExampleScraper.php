@@ -7,7 +7,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace SGL\Lib;
+namespace Lib;
+
+use SGL\Lib\SGLScraper;
 
 class ExampleScraper extends SGLScraper {
 

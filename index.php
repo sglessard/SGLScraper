@@ -11,7 +11,7 @@
 include('SGL/Lib/Autoloader.php');
 spl_autoload_register(['SGL\Lib\Autoloader', 'loader']);
 
-use SGL\Lib\ExampleScraper;
+use Lib\ExampleScraper;
 
 $format = 'html'; // Available : 'xml', 'html'
 
