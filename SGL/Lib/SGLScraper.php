@@ -13,7 +13,7 @@ use DOMDocument;
 use DOMXPath;
 use SimpleXMLElement;
 
-class SGLScraper {
+abstract class SGLScraper {
 
     /**
      * @var $uri
@@ -24,6 +24,11 @@ class SGLScraper {
      * @var $xpath
      */
     public $xpath;
+
+    /**
+     * @param string $response
+     */
+    abstract protected function parse($response);
 
     /**
      * @return string
@@ -121,18 +126,6 @@ class SGLScraper {
     }
 
     /**
-     * @param $response
-     * @return array
-     */
-    public function parse($response) {
-        
-        $this->init($response);
-        $this->error('Create your own parser', 500);
-        
-        return [];
-    }
-
-    /**
      * @param  DOMDocument $doc
      * @return DOMXPath
      */
@@ -178,7 +171,7 @@ class SGLScraper {
         
         foreach ($pages as $uri => $page) {
             
-            $htmlTable .= "<tr><th colspan=2><h1><a href=\"http://$uri\">$uri</a></h1></th></tr>";
+            $htmlTable .= "<tr><th colspan=2><h1><a href=\"$uri\">$uri</a></h1></th></tr>";
             
             foreach ($page as $attribute => $value) {
                 $htmlTable .= "<tr><th>$attribute</th><td>" . nl2br($value) . "</td></tr>";
