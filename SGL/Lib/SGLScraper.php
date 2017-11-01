@@ -57,6 +57,8 @@ abstract class SGLScraper {
     */
     public function getContent($uri)
     {
+        $uri = trim($uri);
+
         $this->setUri($uri); 
 
         $curl = curl_init($uri);
